@@ -1,4 +1,4 @@
-FROM node:16.13.0
+FROM --platform=linux/amd64 node:16.13.0
 
 WORKDIR /src
 
