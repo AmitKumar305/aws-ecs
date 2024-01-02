@@ -40,7 +40,7 @@ jobs:
           # push it to ECR so that it can
           # be deployed to ECS.
           echo "${GITHUB_REF##*/}"
-          docker build -t $ECR_REGISTRY/backend:${GITHUB_REF##*/} .
+          docker build --platform linux/amd64 -t $ECR_REGISTRY/backend:${GITHUB_REF##*/} .
           docker push $ECR_REGISTRY/backend:${GITHUB_REF##*/}
           echo "::set-output name=image::$ECR_REGISTRY/backend:${GITHUB_REF##*/}"
           aws ecs update-service --cluster ${GITHUB_REF##*/} --task-definition backend-${GITHUB_REF##*/} --service backend --force-new-deployment
