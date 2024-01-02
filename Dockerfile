@@ -25,4 +25,4 @@ COPY . .
 EXPOSE 3000
 
 # todo define run script for both server and backend in forever mode
-CMD pm2-docker server/loader.js --machine-name $MACHINE_NAME
+CMD pm2-docker index.js --machine-name $MACHINE_NAME
